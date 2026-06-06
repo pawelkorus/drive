@@ -1,33 +1,37 @@
 {
-  "name": "drive",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "ms-vscode.vscode-typescript-next",
-      ],
-      "settings": {
-        "editor.formatOnSave": true,
-        "[typescript]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode",
-        },
-        "[typescriptreact]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode",
-        },
-      },
+    "name": "drive",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
     },
-  },
-  "postCreateCommand": "npm install",
-  "forwardPorts": [8080],
-  "portsAttributes": {
-    "8080": {
-      "label": "Application",
-      "onAutoForward": "notify",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-vscode.vscode-typescript-next"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "[typescript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "[typescriptreact]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                }
+            }
+        }
     },
-  },
+    "postCreateCommand": "npm install",
+    "forwardPorts": [8080],
+    "portsAttributes": {
+        "8080": {
+            "label": "Application",
+            "onAutoForward": "notify"
+        }
+    },
+    "mounts": ["source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"],
+    "containerEnv": {
+        "SSH_AUTH_SOCK": "/ssh-agent"
+    }
 }

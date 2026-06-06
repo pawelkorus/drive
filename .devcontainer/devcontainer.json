@@ -1,6 +1,8 @@
 {
     "name": "drive",
-    "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     "features": {
         "ghcr.io/devcontainers/features/git:1": {}
     },
